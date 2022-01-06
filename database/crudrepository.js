@@ -22,6 +22,21 @@ let connectionFunctions = {
       });
     });
   },
+  save: (table, data) => {
+    return new Promise((resolve, reject) => {
+      let sqlQuery = "insert into ?? set ?";
+      let insert = [table, data];
+      let preparedQuery = mysql.format(sqlQuery, insert);
+
+      pool.query(preparedQuery, (err, results) => {
+        if (err) {
+          reject(500);
+        } else {
+          resolve(201);
+        }
+      });
+    });
+  },
 };
 
 module.exports = connectionFunctions;
