@@ -9,6 +9,19 @@ const pool = mysql.createPool({
   database: process.env.DB_DB,
 });
 
-let connectionFunctions = {};
+let connectionFunctions = {
+  findAll: (table) => {
+    return new Promise((resolve, reject) => {
+      sqlQuery = "select * from ??";
+      insert = [table];
+
+      let preparedQuery = mysql.format(sqlQuery, insert);
+
+      pool.query(preparedQuery, (err, locations) => {
+        err ? reject(404) : resolve(locations);
+      });
+    });
+  },
+};
 
 module.exports = connectionFunctions;
