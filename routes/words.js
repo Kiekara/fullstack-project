@@ -14,4 +14,16 @@ words.get("/data/:table", async (req, res) => {
   }
 });
 
+words.post("/data/:table", async (req, res) => {
+  let table = req.params.table;
+  let data = req.body;
+
+  try {
+    let result = await db.save(table, data);
+    res.status(result).send(data);
+  } catch (err) {
+    res.status(err).end();
+  }
+});
+
 module.exports = words;
