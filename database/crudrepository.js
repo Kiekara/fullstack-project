@@ -17,8 +17,8 @@ let connectionFunctions = {
 
       let preparedQuery = mysql.format(sqlQuery, insert);
 
-      pool.query(preparedQuery, (err, locations) => {
-        err ? reject(404) : resolve(locations);
+      pool.query(preparedQuery, (err, data) => {
+        err ? reject(404) : resolve(data);
       });
     });
   },
