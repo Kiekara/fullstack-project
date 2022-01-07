@@ -32,6 +32,17 @@ const wordRowSchema = {
   },
 };
 
+const tagSchema = {
+  type: "object",
+  properties: {
+    tag: {
+      type: "string",
+      minLength: 1,
+    },
+  },
+  required: ["tag"],
+};
+
 words.get("/data/:table", async (req, res) => {
   let table = req.params.table;
 
@@ -46,19 +57,22 @@ words.get("/data/:table", async (req, res) => {
 words.post("/data/:table", async (req, res) => {
   let table = req.params.table;
   let data = req.body;
+  let validation = {};
 
   if (table == "words") {
-    let validation = validator.validate(data, wordRowSchema);
+    validation = validator.validate(data, wordRowSchema);
+  } else if (table == "tags") {
+    validation = validator.validate(data, tagSchema);
+  }
 
-    if (validation.errors.length > 0) {
-      res.status(400).send(validation.errors);
-    } else {
-      try {
-        let result = await db.save(table, data);
-        res.status(result).send(data);
-      } catch (err) {
-        res.status(err).end();
-      }
+  if (validation.errors.length > 0) {
+    res.status(400).send(validation.errors);
+  } else {
+    try {
+      let result = await db.save(table, data);
+      res.status(result).send(data);
+    } catch (err) {
+      res.status(err).end();
     }
   }
 });
