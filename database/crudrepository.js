@@ -22,6 +22,17 @@ let connectionFunctions = {
       });
     });
   },
+  findById: (table, id) => {
+    return new Promise((resolve, reject) => {
+      let sqlQuery = "select * from ?? where id = ?";
+      let insert = [table, id];
+      let preparedQuery = mysql.format(sqlQuery, insert);
+
+      pool.query(preparedQuery, (err, data) => {
+        data.length == 0 ? reject(404) : resolve(true);
+      });
+    });
+  },
   save: (table, data) => {
     return new Promise((resolve, reject) => {
       let sqlQuery = "insert into ?? set ?";
