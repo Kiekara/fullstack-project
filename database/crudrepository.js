@@ -37,6 +37,21 @@ let connectionFunctions = {
       });
     });
   },
+  editById: (table, data, id) => {
+    return new Promise((resolve, reject) => {
+      let sqlQuery = "update ?? set ? where id = ?";
+      let insert = [table, data, id];
+      let preparedQuery = mysql.format(sqlQuery, insert);
+
+      pool.query(preparedQuery, (err, results) => {
+        if (err) {
+          reject(500);
+        } else {
+          resolve(200);
+        }
+      });
+    });
+  },
 };
 
 module.exports = connectionFunctions;
