@@ -90,4 +90,33 @@ words.post("/data/:table", async (req, res) => {
   }
 });
 
+words.put("/data/:table/:id([0-9]+)", async (req, res) => {
+  let table = req.params.table;
+  let tableValidation = validator.validate(table, tableSchema);
+
+  let data = req.body;
+  let validation = {};
+
+  let id = req.params.id;
+
+  if (table == "words") {
+    validation = validator.validate(data, wordRowSchema);
+  } else if (table == "tags") {
+    validation = validator.validate(data, tagSchema);
+  }
+
+  if (tableValidation.errors.length > 0) {
+    res.status(403).send(tableValidation.errors);
+  } else if (validation.errors.length > 0) {
+    res.status(400).send(validation.errors);
+  } else {
+    try {
+      let result = await db.editById(table, data, id);
+      res.status(result).send(data);
+    } catch (err) {
+      res.status(err).end();
+    }
+  }
+});
+
 module.exports = words;
