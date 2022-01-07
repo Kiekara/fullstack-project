@@ -49,12 +49,17 @@ const tableSchema = {
 
 words.get("/data/:table", async (req, res) => {
   let table = req.params.table;
+  let tableValidation = validator.validate(table, tableSchema);
 
-  try {
-    let result = await db.findAll(table);
-    res.send(result);
-  } catch (err) {
-    res.status(err).end();
+  if (tableValidation.errors.length > 0) {
+    res.status(403).send(tableValidation.errors);
+  } else {
+    try {
+      let result = await db.findAll(table);
+      res.send(result);
+    } catch (err) {
+      res.status(err).end();
+    }
   }
 });
 
