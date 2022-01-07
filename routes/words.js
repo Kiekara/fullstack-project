@@ -43,6 +43,10 @@ const tagSchema = {
   required: ["tag"],
 };
 
+const tableSchema = {
+  enum: ["words", "tags"],
+};
+
 words.get("/data/:table", async (req, res) => {
   let table = req.params.table;
 
@@ -56,6 +60,8 @@ words.get("/data/:table", async (req, res) => {
 
 words.post("/data/:table", async (req, res) => {
   let table = req.params.table;
+  let tableValidation = validator.validate(table, tableSchema);
+
   let data = req.body;
   let validation = {};
 
@@ -65,7 +71,9 @@ words.post("/data/:table", async (req, res) => {
     validation = validator.validate(data, tagSchema);
   }
 
-  if (validation.errors.length > 0) {
+  if (tableValidation.errors.length > 0) {
+    res.status(403).send(tableValidation.errors);
+  } else if (validation.errors.length > 0) {
     res.status(400).send(validation.errors);
   } else {
     try {
