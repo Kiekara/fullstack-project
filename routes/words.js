@@ -98,6 +98,7 @@ words.put("/data/:table/:id([0-9]+)", async (req, res) => {
   let validation = {};
 
   let id = req.params.id;
+  let idFound = false;
 
   if (table == "words") {
     validation = validator.validate(data, wordRowSchema);
@@ -111,10 +112,19 @@ words.put("/data/:table/:id([0-9]+)", async (req, res) => {
     res.status(400).send(validation.errors);
   } else {
     try {
-      let result = await db.editById(table, data, id);
-      res.status(result).send(data);
+      let result = await db.findById(table, id);
+      idFound = result;
     } catch (err) {
-      res.status(err).end();
+      res.status(err).send({ msg: `could not find resource with id = ${id}` });
+    }
+
+    if (idFound) {
+      try {
+        let result = await db.editById(table, data, id);
+        res.status(result).send(data);
+      } catch (err) {
+        res.status(err).end();
+      }
     }
   }
 });
