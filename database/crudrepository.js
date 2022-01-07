@@ -63,6 +63,17 @@ let connectionFunctions = {
       });
     });
   },
+  deleteById: (table, id) => {
+    return new Promise((resolve, reject) => {
+      let sqlQuery = "delete from ?? where id = ?";
+      let insert = [table, id];
+      let preparedQuery = mysql.format(sqlQuery, insert);
+
+      pool.query(preparedQuery, (err, results) => {
+        err ? reject(500) : resolve(204);
+      });
+    });
+  },
 };
 
 module.exports = connectionFunctions;
