@@ -129,4 +129,34 @@ words.put("/data/:table/:id([0-9]+)", async (req, res) => {
   }
 });
 
+words.delete("/data/:table/:id([0-9]+)", async (req, res) => {
+  let table = req.params.table;
+  let tableValidation = validator.validate(table, tableSchema);
+
+  let id = req.params.id;
+  let idFound = false;
+
+  if (tableValidation.errors.length > 0) {
+    res.status(403).send(tableValidation.errors);
+  } else {
+    try {
+      let result = await db.findById(table, id);
+      idFound = result;
+    } catch (err) {
+      res
+        .status(err)
+        .send({ msg: `could not delete properties where id = ${id}` });
+    }
+
+    if (idFound) {
+      try {
+        let result = await db.deleteById(table, id);
+        res.status(result).end();
+      } catch (err) {
+        res.status(err).end();
+      }
+    }
+  }
+});
+
 module.exports = words;
