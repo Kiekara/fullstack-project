@@ -47,7 +47,7 @@ const tableSchema = {
   enum: ["words", "tags"],
 };
 
-words.get("/data/:table", async (req, res) => {
+words.get("/:table", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
@@ -63,7 +63,7 @@ words.get("/data/:table", async (req, res) => {
   }
 });
 
-words.post("/data/:table", async (req, res) => {
+words.post("/:table", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
@@ -90,7 +90,7 @@ words.post("/data/:table", async (req, res) => {
   }
 });
 
-words.put("/data/:table/:id([0-9]+)", async (req, res) => {
+words.put("/:table/:id([0-9]+)", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
@@ -129,7 +129,7 @@ words.put("/data/:table/:id([0-9]+)", async (req, res) => {
   }
 });
 
-words.delete("/data/:table/:id([0-9]+)", async (req, res) => {
+words.delete("/:table/:id([0-9]+)", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
