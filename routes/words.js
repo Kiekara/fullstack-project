@@ -2,7 +2,7 @@ const express = require("express");
 const Validator = require("jsonschema").Validator;
 const db = require("../database/crudrepository.js");
 
-const words = express.Router();
+const data = express.Router();
 const validator = new Validator();
 
 const wordRowSchema = {
@@ -47,7 +47,7 @@ const tableSchema = {
   enum: ["words", "tags"],
 };
 
-words.get("/:table", async (req, res) => {
+data.get("/:table", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
@@ -63,7 +63,7 @@ words.get("/:table", async (req, res) => {
   }
 });
 
-words.post("/:table", async (req, res) => {
+data.post("/:table", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
@@ -90,7 +90,7 @@ words.post("/:table", async (req, res) => {
   }
 });
 
-words.put("/:table/:id([0-9]+)", async (req, res) => {
+data.put("/:table/:id([0-9]+)", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
@@ -129,7 +129,7 @@ words.put("/:table/:id([0-9]+)", async (req, res) => {
   }
 });
 
-words.delete("/:table/:id([0-9]+)", async (req, res) => {
+data.delete("/:table/:id([0-9]+)", async (req, res) => {
   let table = req.params.table;
   let tableValidation = validator.validate(table, tableSchema);
 
@@ -159,4 +159,4 @@ words.delete("/:table/:id([0-9]+)", async (req, res) => {
   }
 });
 
-module.exports = words;
+module.exports = data;
