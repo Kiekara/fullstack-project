@@ -1,7 +1,7 @@
 import React from "react";
 import StartView from "./StartView";
 import WordRow from "../items/WordRow";
-import { List } from "@mui/material";
+import { Button, List, ListItem } from "@mui/material";
 
 function WordList({ words, sort, learn, setSort, setLearn }) {
   return sort === -1 ? (
@@ -24,6 +24,11 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
             <WordRow row={row} />
           ) : null
         )}
+        <ListItem>
+          <Button fullWidth variant="contained" size="medium" margin="dense">
+            Check answers
+          </Button>
+        </ListItem>
       </List>
     </>
   );
