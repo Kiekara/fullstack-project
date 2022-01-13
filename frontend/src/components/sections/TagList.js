@@ -1,6 +1,7 @@
 import React from "react";
 import TagButton from "../items/TagButton";
 import BackButton from "../items/BackButton";
+import LearnButton from "../items/LearnButton";
 import { Stack } from "@mui/material";
 
 function TagList({ tags, learn, setSort, setLearn }) {
@@ -9,6 +10,7 @@ function TagList({ tags, learn, setSort, setLearn }) {
       <Stack spacing={2}>
         <h3>Choose a category</h3>
         <BackButton learn={learn} setSort={setSort} setLearn={setLearn} />
+        <LearnButton />
         {tags.map((tag) => (
           <TagButton
             tag={tag}
