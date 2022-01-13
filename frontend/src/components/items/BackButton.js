@@ -1,5 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 function BackButton({ learn, setSort, setLearn, setSubmit }) {
   const handleClick = () => {
@@ -10,13 +12,24 @@ function BackButton({ learn, setSort, setLearn, setSubmit }) {
 
   return !learn ? (
     <>
-      <Button disabled variant="contained" size="medium" onClick={handleClick}>
+      <Button
+        disabled
+        variant="contained"
+        size="medium"
+        startIcon={<FontAwesomeIcon icon={faChevronLeft} />}
+        onClick={handleClick}
+      >
         Go back
       </Button>
     </>
   ) : (
     <>
-      <Button variant="contained" size="medium" onClick={handleClick}>
+      <Button
+        variant="contained"
+        size="medium"
+        startIcon={<FontAwesomeIcon icon={faChevronLeft} />}
+        onClick={handleClick}
+      >
         Go back
       </Button>
     </>
