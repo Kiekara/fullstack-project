@@ -48,7 +48,13 @@ function Home() {
           </Grid>
           <Grid item xs={8}>
             <Box sx={{ flexGrow: 1 }} mt={"40px"}>
-              <WordList words={words} sort={sort} />
+              <WordList
+                words={words}
+                sort={sort}
+                learn={learn}
+                setSort={setSort}
+                setLearn={setLearn}
+              />
             </Box>
           </Grid>
         </Grid>
