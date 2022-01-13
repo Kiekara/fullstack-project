@@ -1,9 +1,10 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-function LearnButton({ setSort }) {
+function LearnButton({ setSort, setLearn }) {
   const handleClick = () => {
     setSort(0);
+    setLearn(true);
   };
 
   return (
