@@ -11,9 +11,20 @@ function TagButton({ tag, learn, setSort, setLearn }) {
 
   return (
     <>
-      <Button variant="contained" size="medium" onClick={handleClick}>
-        Learn {name}
-      </Button>
+      {!learn ? (
+        <Button variant="contained" size="medium" onClick={handleClick}>
+          Learn {name}
+        </Button>
+      ) : (
+        <Button
+          disabled
+          variant="contained"
+          size="medium"
+          onClick={handleClick}
+        >
+          Learn {name}
+        </Button>
+      )}
     </>
   );
 }
