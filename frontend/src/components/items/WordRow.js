@@ -3,7 +3,16 @@ import { IconButton, ListItem, ListItemText, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function WordRow({ row, index, submit, answers, setAnswers, getData, api }) {
+function WordRow({
+  row,
+  index,
+  edit,
+  submit,
+  answers,
+  setAnswers,
+  getData,
+  api,
+}) {
   const { id, wordEng, wordFin } = row;
   const [input, setInput] = useState("");
 
@@ -72,14 +81,16 @@ function WordRow({ row, index, submit, answers, setAnswers, getData, api }) {
             onChange={handleChange}
           />
         )}
-        <span style={{ paddingLeft: "8px" }}>
-          <IconButton size="medium" color="primary">
-            <FontAwesomeIcon icon={faEdit} />
-          </IconButton>
-          <IconButton size="medium" color="error" onClick={handleDelete}>
-            <FontAwesomeIcon icon={faTrash} />
-          </IconButton>
-        </span>
+        {edit ? (
+          <span style={{ paddingLeft: "8px" }}>
+            <IconButton size="medium" color="primary">
+              <FontAwesomeIcon icon={faEdit} />
+            </IconButton>
+            <IconButton size="medium" color="error" onClick={handleDelete}>
+              <FontAwesomeIcon icon={faTrash} />
+            </IconButton>
+          </span>
+        ) : null}
       </ListItem>
     </>
   );
