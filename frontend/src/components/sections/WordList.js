@@ -31,9 +31,19 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
       >
         {words.map((row, index) =>
           sort === 0 ? (
-            <WordRow row={row} index={index} />
+            <WordRow
+              row={row}
+              index={index}
+              answers={answers}
+              setAnswers={setAnswers}
+            />
           ) : row.tagID === sort ? (
-            <WordRow row={row} index={index} />
+            <WordRow
+              row={row}
+              index={index}
+              answers={answers}
+              setAnswers={setAnswers}
+            />
           ) : null
         )}
         <ListItem>
