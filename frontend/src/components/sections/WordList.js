@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import StartView from "./StartView";
 import WordRow from "../items/WordRow";
-import { Button, List, ListItem } from "@mui/material";
 import BackButton from "../items/BackButton";
+import { Button, List, ListItem } from "@mui/material";
 
-function WordList({ words, sort, learn, setSort, setLearn }) {
+function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
   const [answers, setAnswers] = useState([]);
   const [submit, setSubmit] = useState(false);
 
@@ -49,6 +49,8 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
               submit={submit}
               answers={answers}
               setAnswers={setAnswers}
+              getData={getData}
+              api={api}
             />
           ) : row.tagID === sort ? (
             <WordRow
@@ -57,6 +59,8 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
               submit={submit}
               answers={answers}
               setAnswers={setAnswers}
+              getData={getData}
+              api={api}
             />
           ) : null
         )}
