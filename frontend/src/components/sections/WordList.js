@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import StartView from "./StartView";
 import WordRow from "../items/WordRow";
 import BackButton from "../items/BackButton";
+import DeleteButton from "../items/DeleteButton";
 import { Button, List, ListItem } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
   const [answers, setAnswers] = useState([]);
@@ -53,14 +54,7 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
               Edit category
             </Button>
           </span>
-          <Button
-            variant="contained"
-            color="error"
-            size="medium"
-            startIcon={<FontAwesomeIcon icon={faTrash} />}
-          >
-            Delete category
-          </Button>
+          <DeleteButton />
         </ListItem>
         {words.map((row, index) =>
           sort === 0 ? (
