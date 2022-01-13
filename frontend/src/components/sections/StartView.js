@@ -1,7 +1,8 @@
 import React from "react";
+import LearnButton from "../items/LearnButton";
 import { Box } from "@mui/material";
 
-function StartView() {
+function StartView({ learn, setSort, setLearn }) {
   return (
     <>
       <Box mr={"60px"} ml={"60px"}>
@@ -13,6 +14,7 @@ function StartView() {
           from the left or just practise with random words
         </p>
         <br />
+        <LearnButton learn={learn} setSort={setSort} setLearn={setLearn} />
       </Box>
     </>
   );
