@@ -33,6 +33,7 @@ function Home() {
   return (
     <>
       <Container maxWidth="960px">
+        <h1>Language learning app</h1>
         <Grid container spacing={2} mt={"16px"} mb={"16px"}>
           <Grid item xs={4}>
             <TagList tags={tags} />
