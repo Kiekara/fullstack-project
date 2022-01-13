@@ -54,7 +54,13 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
               Edit category
             </Button>
           </span>
-          <DeleteButton sort={sort} setSort={setSort} setLearn={setLearn} />
+          <DeleteButton
+            sort={sort}
+            setSort={setSort}
+            setLearn={setLearn}
+            getData={getData}
+            api={api}
+          />
         </ListItem>
         {words.map((row, index) =>
           sort === 0 ? (
