@@ -5,6 +5,7 @@ import { Button, List, ListItem } from "@mui/material";
 
 function WordList({ words, sort, learn, setSort, setLearn }) {
   const [answers, setAnswers] = useState([]);
+  const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     if (!answers.length) {
