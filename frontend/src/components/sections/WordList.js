@@ -1,9 +1,12 @@
 import React from "react";
+import StartView from "./StartView";
 import WordRow from "../items/WordRow";
 import { List } from "@mui/material";
 
-function WordList({ words, sort }) {
-  return (
+function WordList({ words, sort, learn, setSort, setLearn }) {
+  return sort === -1 ? (
+    <StartView learn={learn} setSort={setSort} setLearn={setLearn} />
+  ) : (
     <>
       <List
         sx={{
