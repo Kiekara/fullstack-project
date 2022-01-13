@@ -4,7 +4,7 @@ import WordRow from "../items/WordRow";
 import BackButton from "../items/BackButton";
 import { Button, List, ListItem } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
   const [answers, setAnswers] = useState([]);
@@ -44,6 +44,15 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             setLearn={setLearn}
             setSubmit={setSubmit}
           />
+          <span style={{ marginRight: "auto", marginLeft: "auto" }}>
+            <Button
+              variant="contained"
+              size="medium"
+              startIcon={<FontAwesomeIcon icon={faEdit} />}
+            >
+              Edit category
+            </Button>
+          </span>
           <Button
             variant="contained"
             color="error"
