@@ -7,6 +7,7 @@ function Home() {
   const [tags, setTags] = useState([]);
   const [words, setWords] = useState([]);
   const [sort, setSort] = useState(-1);
+  const [learn, setLearn] = useState(false);
 
   useEffect(() => {
     const get = async (path) => {
@@ -38,7 +39,12 @@ function Home() {
         <h1>Language learning app</h1>
         <Grid container spacing={2} mt={"16px"} mb={"16px"}>
           <Grid item xs={4}>
-            <TagList tags={tags} setSort={setSort} />
+            <TagList
+              tags={tags}
+              learn={learn}
+              setSort={setSort}
+              setLearn={setLearn}
+            />
           </Grid>
           <Grid item xs={8}>
             <Box sx={{ flexGrow: 1 }} mt={"40px"}>
