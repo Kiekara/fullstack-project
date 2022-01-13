@@ -10,7 +10,7 @@ function TagList({ tags, learn, setSort, setLearn }) {
       <Stack spacing={2}>
         <h3>Choose a category</h3>
         <BackButton learn={learn} setSort={setSort} setLearn={setLearn} />
-        <LearnButton setSort={setSort} />
+        <LearnButton learn={learn} setSort={setSort} setLearn={setLearn} />
         {tags.map((tag) => (
           <TagButton
             tag={tag}
