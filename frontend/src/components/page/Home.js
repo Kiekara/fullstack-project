@@ -58,6 +58,11 @@ function Home() {
 
       return result;
     },
+    deleteData: async (path, id) => {
+      await fetch(`http://localhost:8080/data/${path}/${id}/`, {
+        method: "DELETE",
+      });
+    },
   };
 
   return (
