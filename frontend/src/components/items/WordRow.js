@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IconButton, ListItem, ListItemText, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function WordRow({ row, index, submit, answers, setAnswers, getData, api }) {
   const { id, wordEng, wordFin } = row;
@@ -73,6 +73,9 @@ function WordRow({ row, index, submit, answers, setAnswers, getData, api }) {
           />
         )}
         <span style={{ paddingLeft: "8px" }}>
+          <IconButton size="medium" color="primary">
+            <FontAwesomeIcon icon={faEdit} />
+          </IconButton>
           <IconButton size="medium" color="error" onClick={handleDelete}>
             <FontAwesomeIcon icon={faTrash} />
           </IconButton>
