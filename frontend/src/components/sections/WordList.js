@@ -35,7 +35,12 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
           borderRadius: "8px",
         }}
       >
-        <BackButton learn={learn} setSort={setSort} setLearn={setLearn} />
+        <BackButton
+          learn={learn}
+          setSort={setSort}
+          setLearn={setLearn}
+          setSubmit={setSubmit}
+        />
         {words.map((row, index) =>
           sort === 0 ? (
             <WordRow
