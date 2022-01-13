@@ -27,7 +27,7 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
     <>
       <List
         sx={{
-          bgcolor: "gray",
+          bgcolor: "lightblue",
           pr: "16px",
           pl: "16px",
           border: "1px solid black",
