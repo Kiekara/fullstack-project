@@ -43,6 +43,7 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             learn={learn}
             setSort={setSort}
             setLearn={setLearn}
+            setEdit={setEdit}
             setSubmit={setSubmit}
           />
           <EditButton setEdit={setEdit} />
