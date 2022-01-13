@@ -2,10 +2,12 @@ import React from "react";
 import { ListItem, ListItemText, TextField } from "@mui/material";
 
 function WordRow({ row }) {
+  const { wordEng, wordFin } = row;
+
   return (
     <>
       <ListItem>
-        <ListItemText primary={row.wordEng} />
+        <ListItemText primary={wordEng} />
         <TextField
           hiddenLabel
           variant="filled"
