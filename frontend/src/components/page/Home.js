@@ -33,6 +33,21 @@ function Home() {
     return data;
   };
 
+  const api = {
+    postData: async (path, data) => {
+      let response = await fetch(`http://localhost:8080/data/${path}/`, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let result = await response.json();
+
+      return result;
+    },
+  };
+
   return (
     <>
       <Container maxWidth="960px">
