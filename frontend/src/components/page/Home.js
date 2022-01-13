@@ -80,7 +80,12 @@ function Home() {
             />
           </Grid>
           <Grid item xs={8}>
-            <Box sx={{ flexGrow: 1 }} mt={"40px"}>
+            {learn ? (
+              <h3>
+                Learn {tags.map((tag) => (tag.id === sort ? tag.name : null))}
+              </h3>
+            ) : null}
+            <Box sx={{ flexGrow: 1 }} mt={learn ? "16px" : "40px"}>
               <WordList
                 words={words}
                 sort={sort}
