@@ -3,6 +3,8 @@ import StartView from "./StartView";
 import WordRow from "../items/WordRow";
 import BackButton from "../items/BackButton";
 import { Button, List, ListItem } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
   const [answers, setAnswers] = useState([]);
@@ -35,12 +37,22 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
           borderRadius: "8px",
         }}
       >
-        <BackButton
-          learn={learn}
-          setSort={setSort}
-          setLearn={setLearn}
-          setSubmit={setSubmit}
-        />
+        <ListItem>
+          <BackButton
+            learn={learn}
+            setSort={setSort}
+            setLearn={setLearn}
+            setSubmit={setSubmit}
+          />
+          <Button
+            variant="contained"
+            color="error"
+            size="medium"
+            startIcon={<FontAwesomeIcon icon={faTrash} />}
+          >
+            Delete category
+          </Button>
+        </ListItem>
         {words.map((row, index) =>
           sort === 0 ? (
             <WordRow
@@ -69,7 +81,6 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             fullWidth
             variant="contained"
             size="medium"
-            margin="dense"
             onClick={handleClick}
           >
             Check answers
