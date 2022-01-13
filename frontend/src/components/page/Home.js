@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TagList from "../sections/TagList";
-import { Container, Grid } from "@mui/material";
+import WordList from "../sections/WordList";
+import { Box, Container, Grid } from "@mui/material";
 
 function Home() {
   const [tags, setTags] = useState([]);
@@ -37,6 +38,11 @@ function Home() {
         <Grid container spacing={2} mt={"16px"} mb={"16px"}>
           <Grid item xs={4}>
             <TagList tags={tags} />
+          </Grid>
+          <Grid item xs={8}>
+            <Box sx={{ flexGrow: 1 }} mt={"40px"}>
+              <WordList words={words} />
+            </Box>
           </Grid>
         </Grid>
       </Container>
