@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import StartView from "./StartView";
 import WordRow from "../items/WordRow";
 import { Button, List, ListItem } from "@mui/material";
 
 function WordList({ words, sort, learn, setSort, setLearn }) {
+  const [answers, setAnswers] = useState([]);
+
   return sort === -1 ? (
     <StartView learn={learn} setSort={setSort} setLearn={setLearn} />
   ) : (
