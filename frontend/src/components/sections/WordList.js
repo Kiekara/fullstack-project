@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StartView from "./StartView";
 import WordRow from "../items/WordRow";
 import { Button, List, ListItem } from "@mui/material";
 
 function WordList({ words, sort, learn, setSort, setLearn }) {
   const [answers, setAnswers] = useState([]);
+
+  useEffect(() => {
+    if (!answers.length) {
+      setAnswers(
+        words.map((row) => {
+          return sort === 0 ? false : row.tagID === sort ? false : null;
+        })
+      );
+    }
+  }, [answers, sort, words, words.length]);
 
   return sort === -1 ? (
     <StartView learn={learn} setSort={setSort} setLearn={setLearn} />
@@ -19,7 +29,7 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
           borderRadius: "8px",
         }}
       >
-        {words.map((row) =>
+        {words.map((row, index) =>
           sort === 0 ? (
             <WordRow row={row} />
           ) : row.tagID === sort ? (
