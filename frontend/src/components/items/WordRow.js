@@ -26,6 +26,12 @@ function WordRow({ row, index, submit, answers, setAnswers, getData, api }) {
     }
   };
 
+  const handleDelete = async () => {
+    await api.deleteData("words", id);
+    let data = await getData("words");
+    console.log(data);
+  };
+
   return (
     <>
       <ListItem>
@@ -67,7 +73,7 @@ function WordRow({ row, index, submit, answers, setAnswers, getData, api }) {
           />
         )}
         <span style={{ paddingLeft: "8px" }}>
-          <IconButton size="medium" color="error">
+          <IconButton size="medium" color="error" onClick={handleDelete}>
             <FontAwesomeIcon icon={faTrash} />
           </IconButton>
         </span>
