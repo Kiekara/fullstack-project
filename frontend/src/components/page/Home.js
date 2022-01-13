@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import TagList from "../sections/TagList";
+import { Container, Grid } from "@mui/material";
 
 function Home() {
   const [tags, setTags] = useState([]);
@@ -28,7 +30,17 @@ function Home() {
     return data;
   };
 
-  return <div></div>;
+  return (
+    <>
+      <Container maxWidth="960px">
+        <Grid container spacing={2} mt={"16px"} mb={"16px"}>
+          <Grid item xs={4}>
+            <TagList tags={tags} />
+          </Grid>
+        </Grid>
+      </Container>
+    </>
+  );
 }
 
 export default Home;
