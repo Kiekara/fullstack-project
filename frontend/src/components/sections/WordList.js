@@ -10,6 +10,7 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
   const [answers, setAnswers] = useState([]);
   const [submit, setSubmit] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     if (!answers.length) {
