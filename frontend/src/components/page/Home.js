@@ -42,7 +42,7 @@ function Home() {
           </Grid>
           <Grid item xs={8}>
             <Box sx={{ flexGrow: 1 }} mt={"40px"}>
-              <WordList words={words} />
+              <WordList words={words} sort={sort} />
             </Box>
           </Grid>
         </Grid>
