@@ -3,7 +3,15 @@ import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function DeleteButton() {
+function DeleteButton({ sort, setSort, setLearn, getData, api }) {
+  const handleDelete = async () => {
+    await api.deleteData("tags", sort);
+    let data = await getData("tags");
+    console.log(data);
+    setSort(-1);
+    setLearn(false);
+  };
+
   return (
     <>
       <Button
@@ -11,6 +19,7 @@ function DeleteButton() {
         color="error"
         size="medium"
         startIcon={<FontAwesomeIcon icon={faTrash} />}
+        onClick={handleDelete}
       >
         Delete category
       </Button>
