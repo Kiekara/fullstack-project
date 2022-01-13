@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { ListItem, ListItemText, TextField } from "@mui/material";
+import { IconButton, ListItem, ListItemText, TextField } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function WordRow({ row, index, submit, answers, setAnswers }) {
-  const { wordEng, wordFin } = row;
+function WordRow({ row, index, submit, answers, setAnswers, getData, api }) {
+  const { id, wordEng, wordFin } = row;
   const [input, setInput] = useState("");
 
   const handleChange = (event) => {
@@ -64,6 +66,11 @@ function WordRow({ row, index, submit, answers, setAnswers }) {
             onChange={handleChange}
           />
         )}
+        <span style={{ paddingLeft: "8px" }}>
+          <IconButton size="medium" color="error">
+            <FontAwesomeIcon icon={faTrash} />
+          </IconButton>
+        </span>
       </ListItem>
     </>
   );
