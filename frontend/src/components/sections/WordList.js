@@ -2,7 +2,7 @@ import React from "react";
 import WordRow from "../items/WordRow";
 import { List } from "@mui/material";
 
-function WordList({ words }) {
+function WordList({ words, sort }) {
   return (
     <>
       <List
@@ -14,9 +14,9 @@ function WordList({ words }) {
           borderRadius: "8px",
         }}
       >
-        {words.map((row) => (
-          <WordRow row={row} />
-        ))}
+        {words.map((row) =>
+          row.tagID === sort ? <WordRow row={row} /> : null
+        )}
       </List>
     </>
   );
