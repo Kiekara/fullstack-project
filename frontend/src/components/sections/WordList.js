@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import StartView from "./StartView";
 import WordRow from "../items/WordRow";
 import { Button, List, ListItem } from "@mui/material";
+import BackButton from "../items/BackButton";
 
 function WordList({ words, sort, learn, setSort, setLearn }) {
   const [answers, setAnswers] = useState([]);
@@ -34,6 +35,7 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
           borderRadius: "8px",
         }}
       >
+        <BackButton learn={learn} setSort={setSort} setLearn={setLearn} />
         {words.map((row, index) =>
           sort === 0 ? (
             <WordRow
