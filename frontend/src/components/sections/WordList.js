@@ -17,6 +17,10 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
     }
   }, [answers, sort, words, words.length]);
 
+  const handleClick = () => {
+    setSubmit(true);
+  };
+
   return sort === -1 ? (
     <StartView learn={learn} setSort={setSort} setLearn={setLearn} />
   ) : (
@@ -50,7 +54,13 @@ function WordList({ words, sort, learn, setSort, setLearn }) {
           ) : null
         )}
         <ListItem>
-          <Button fullWidth variant="contained" size="medium" margin="dense">
+          <Button
+            fullWidth
+            variant="contained"
+            size="medium"
+            margin="dense"
+            onClick={handleClick}
+          >
             Check answers
           </Button>
         </ListItem>
