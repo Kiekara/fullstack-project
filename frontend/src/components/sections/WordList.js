@@ -15,7 +15,11 @@ function WordList({ words, sort }) {
         }}
       >
         {words.map((row) =>
-          row.tagID === sort ? <WordRow row={row} /> : null
+          sort === 0 ? (
+            <WordRow row={row} />
+          ) : row.tagID === sort ? (
+            <WordRow row={row} />
+          ) : null
         )}
       </List>
     </>
