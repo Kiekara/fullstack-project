@@ -59,6 +59,7 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             <WordRow
               row={row}
               index={index}
+              edit={edit}
               submit={submit}
               answers={answers}
               setAnswers={setAnswers}
@@ -69,6 +70,7 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             <WordRow
               row={row}
               index={index}
+              edit={edit}
               submit={submit}
               answers={answers}
               setAnswers={setAnswers}
