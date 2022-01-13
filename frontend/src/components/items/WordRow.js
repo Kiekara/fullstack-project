@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ListItem, ListItemText, TextField } from "@mui/material";
 
-function WordRow({ row, index, answers, setAnswers }) {
+function WordRow({ row, index, submit, answers, setAnswers }) {
   const { wordEng, wordFin } = row;
   const [input, setInput] = useState("");
 
@@ -28,15 +28,42 @@ function WordRow({ row, index, answers, setAnswers }) {
     <>
       <ListItem>
         <ListItemText primary={wordEng} />
-        <TextField
-          hiddenLabel
-          value={input}
-          variant="filled"
-          size="small"
-          margin="dense"
-          sx={{ width: "50%" }}
-          onChange={handleChange}
-        />
+        {submit && answers[index] ? (
+          <TextField
+            focused
+            inputProps={{ readOnly: true }}
+            label="Correct"
+            value={input}
+            variant="filled"
+            color="success"
+            size="small"
+            margin="dense"
+            sx={{ width: "50%" }}
+            onChange={handleChange}
+          />
+        ) : submit && !answers[index] ? (
+          <TextField
+            error
+            inputProps={{ readOnly: true }}
+            label="Incorrect"
+            value={input}
+            variant="filled"
+            size="small"
+            margin="dense"
+            sx={{ width: "50%" }}
+            onChange={handleChange}
+          />
+        ) : (
+          <TextField
+            hiddenLabel
+            value={input}
+            variant="filled"
+            size="small"
+            margin="dense"
+            sx={{ width: "50%" }}
+            onChange={handleChange}
+          />
+        )}
       </ListItem>
     </>
   );
