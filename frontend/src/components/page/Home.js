@@ -12,12 +12,7 @@ function Home() {
   useEffect(() => {
     const get = async (path) => {
       let data = await getData(path);
-
-      if (path === "tags") {
-        setTags(data);
-      } else {
-        setWords(data);
-      }
+      console.log(data);
     };
 
     get("tags");
@@ -29,6 +24,12 @@ function Home() {
       method: "GET",
     });
     let data = await response.json();
+
+    if (path === "tags") {
+      setTags(data);
+    } else {
+      setWords(data);
+    }
 
     return data;
   };
