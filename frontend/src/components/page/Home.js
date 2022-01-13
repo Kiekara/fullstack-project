@@ -6,6 +6,7 @@ import { Box, Container, Grid } from "@mui/material";
 function Home() {
   const [tags, setTags] = useState([]);
   const [words, setWords] = useState([]);
+  const [sort, setSort] = useState(-1);
 
   useEffect(() => {
     const get = async (path) => {
@@ -37,7 +38,7 @@ function Home() {
         <h1>Language learning app</h1>
         <Grid container spacing={2} mt={"16px"} mb={"16px"}>
           <Grid item xs={4}>
-            <TagList tags={tags} />
+            <TagList tags={tags} setSort={setSort} />
           </Grid>
           <Grid item xs={8}>
             <Box sx={{ flexGrow: 1 }} mt={"40px"}>
