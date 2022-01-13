@@ -87,6 +87,8 @@ function Home() {
                 learn={learn}
                 setSort={setSort}
                 setLearn={setLearn}
+                getData={getData}
+                api={api}
               />
             </Box>
           </Grid>
