@@ -1,7 +1,14 @@
 import React from "react";
+import { Button } from "@mui/material";
 
 function BackButton() {
-  return <div></div>;
+  return (
+    <>
+      <Button disabled variant="contained" size="medium">
+        Go back
+      </Button>
+    </>
+  );
 }
 
 export default BackButton;
