@@ -46,6 +46,18 @@ function Home() {
 
       return result;
     },
+    editData: async (path, data, id) => {
+      let response = await fetch(`http://localhost:8080/data/${path}/${id}/`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      let result = await response.json();
+
+      return result;
+    },
   };
 
   return (
