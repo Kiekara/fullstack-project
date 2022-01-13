@@ -8,7 +8,7 @@ function TagList({ tags, learn, setSort, setLearn }) {
     <>
       <Stack spacing={2}>
         <h3>Choose a category</h3>
-        <BackButton />
+        <BackButton setSort={setSort} />
         {tags.map((tag) => (
           <TagButton
             tag={tag}
