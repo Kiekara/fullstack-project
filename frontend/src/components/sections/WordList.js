@@ -35,6 +35,10 @@ function WordList({
         })
       );
     }
+
+    if (!submit) {
+      setPercentage(0);
+    }
   }, [answers, sort, submit, words]);
 
   const handleClick = () => {
