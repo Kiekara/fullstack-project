@@ -25,7 +25,7 @@ function EditTagForm({ tag, setEdit, getData, api }) {
       <TextField
         hiddenLabel
         placeholder={name}
-        value={name}
+        value={newTag}
         size="small"
         sx={{ width: "62%", height: "36.5px", mr: "auto" }}
         onChange={handleChange}
