@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Button,
   FormControl,
   IconButton,
   InputAdornment,
@@ -10,7 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-function Login() {
+function Login({ setRights }) {
   const [passValues, setPassValues] = useState({
     password: "",
     showPassword: false,
@@ -34,6 +35,34 @@ function Login() {
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const handleLogin = async () => {
+    if (username && passValues.password) {
+      const data = {
+        username: username,
+        password: passValues.password,
+      };
+
+      let response = await fetch("http://localhost:8080/login/", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      let result = await response.json();
+
+      if ("rights" in result) {
+        setRights(result.rights);
+      } else {
+        console.log(result);
+      }
+    }
+
+    setUsername("");
+    setPassValues({ ...passValues, password: "" });
   };
 
   return (
@@ -71,6 +100,14 @@ function Login() {
           label="password"
         />
       </FormControl>
+      <Button
+        variant="contained"
+        size="medium"
+        sx={{ m: 1, width: "27ch" }}
+        onClick={handleLogin}
+      >
+        Login
+      </Button>
     </>
   );
 }
