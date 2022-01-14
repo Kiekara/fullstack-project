@@ -6,6 +6,7 @@ import DeleteButton from "../items/DeleteButton";
 import { Button, List, ListItem } from "@mui/material";
 import EditButton from "../items/EditButton";
 import AddWordRow from "../items/AddWordRow";
+import QuitButton from "../items/QuitButton";
 
 function WordList({
   words,
@@ -62,7 +63,11 @@ function WordList({
             setEdit={setEdit}
             setSubmit={setSubmit}
           />
-          <EditButton setEdit={setEdit} />
+          {!edit ? (
+            <EditButton setEdit={setEdit} />
+          ) : (
+            <QuitButton setEdit={setEdit} />
+          )}
           <DeleteButton
             sort={sort}
             setSort={setSort}
