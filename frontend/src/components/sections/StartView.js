@@ -5,6 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 
 function StartView({ learn, swap, setSort, setLearn, setSwap }) {
+  const handleSwap = () => {
+    if (!swap) {
+      setSwap(true);
+    } else {
+      setSwap(false);
+    }
+  };
+
   return (
     <>
       <Box mr={"60px"} ml={"60px"}>
@@ -14,7 +22,7 @@ function StartView({ learn, swap, setSort, setLearn, setSwap }) {
         <p>Choose which way you want to practise</p>
         <br />
         <Box>
-          <IconButton size="medium" color="primary">
+          <IconButton size="medium" color="primary" onClick={handleSwap}>
             <FontAwesomeIcon icon={faExchangeAlt} />
           </IconButton>
         </Box>
