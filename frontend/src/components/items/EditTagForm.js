@@ -3,7 +3,7 @@ import { Button, ListItem, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-function EditTagForm({ tag, setEdit, getData, api }) {
+function EditTagForm({ tag, tags, setEdit, getData, api }) {
   const [newTag, setNewTag] = useState(tag.name);
   const { id, name } = tag;
 
@@ -12,16 +12,27 @@ function EditTagForm({ tag, setEdit, getData, api }) {
     setNewTag(inputValue);
   };
 
+  const checkDuplicates = (tag, tags) => {
+    let names = tags.map((tag) => tag.name);
+
+    return names.includes(tag);
+  };
+
   const handleEdit = async () => {
-    let response = await api.editData("tags", { name: newTag }, id);
-    console.log(response);
-    let result = await getData("tags");
-    console.log(result);
+    let found = checkDuplicates(newTag.toLowerCase(), tags);
+
+    if (!found) {
+      let response = await api.editData("tags", { name: newTag }, id);
+      console.log(response);
+      let result = await getData("tags");
+      console.log(result);
+    }
+
     setEdit(false);
   };
 
   return (
-    <ListItem>
+    <ListItem key={name}>
       <TextField
         hiddenLabel
         placeholder={name}
