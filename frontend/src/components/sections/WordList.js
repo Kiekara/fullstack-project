@@ -5,6 +5,7 @@ import BackButton from "../items/BackButton";
 import DeleteButton from "../items/DeleteButton";
 import { Button, List, ListItem } from "@mui/material";
 import EditButton from "../items/EditButton";
+import WordRowForm from "../items/WordRowForm";
 
 function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
   const [answers, setAnswers] = useState([]);
@@ -40,7 +41,6 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
       >
         <ListItem>
           <BackButton
-            learn={learn}
             setSort={setSort}
             setLearn={setLearn}
             setEdit={setEdit}
@@ -80,16 +80,20 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             />
           ) : null
         )}
-        <ListItem>
-          <Button
-            fullWidth
-            variant="contained"
-            size="medium"
-            onClick={handleClick}
-          >
-            Check answers
-          </Button>
-        </ListItem>
+        {!edit ? (
+          <ListItem>
+            <Button
+              fullWidth
+              variant="contained"
+              size="medium"
+              onClick={handleClick}
+            >
+              Check answers
+            </Button>
+          </ListItem>
+        ) : (
+          <WordRowForm />
+        )}
       </List>
     </>
   );
