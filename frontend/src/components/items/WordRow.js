@@ -35,7 +35,7 @@ function WordRow({
     let inputValue = event.target.value;
     setInput(inputValue);
 
-    if (inputValue === secondary) {
+    if (inputValue.toUpperCase() === secondary.toUpperCase()) {
       setAnswers(
         answers.map((answer, idx) => {
           return idx === index ? true : answer;
@@ -72,7 +72,7 @@ function WordRow({
     />
   ) : (
     <>
-      <ListItem>
+      <ListItem key={id}>
         <ListItemText primary={primary} />
         {submit && answers[index] ? (
           <TextField
