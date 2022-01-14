@@ -9,6 +9,12 @@ function WordRowForm({ sort, swap, getData, api }) {
   const [primary, setPrimary] = useState("");
   const [secondary, setSecondary] = useState("");
 
+  const data = {
+    tagID: sort,
+    wordEng: !swap ? primary : secondary,
+    wordFin: !swap ? secondary : primary,
+  };
+
   useEffect(() => {
     if (!swap) {
       setPriLabel("English");
@@ -27,6 +33,15 @@ function WordRowForm({ sort, swap, getData, api }) {
   const handleSecondary = (event) => {
     let inputValue = event.target.value;
     setSecondary(inputValue);
+  };
+
+  const handleEdit = async () => {
+    let response = await api.postData("words", data);
+    console.log(response);
+    let result = await getData("words");
+    console.log(result);
+    setPrimary("");
+    setSecondary("");
   };
 
   return (
@@ -49,7 +64,7 @@ function WordRowForm({ sort, swap, getData, api }) {
         sx={{ width: "45%", mr: "8px" }}
         onChange={handleSecondary}
       />
-      <IconButton size="medium" color="success">
+      <IconButton size="medium" color="success" onClick={handleEdit}>
         <FontAwesomeIcon icon={faPlus} />
       </IconButton>
     </ListItem>
