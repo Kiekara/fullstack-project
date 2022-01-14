@@ -71,11 +71,9 @@ function Login({ setRights }) {
 
   return (
     <>
-      {error ? <p style={{ color: "red" }}>{errormsg}</p> : null}
       <TextField
         label="Username"
         value={username}
-        color={error ? "error" : "primary"}
         sx={{ m: 1, mt: 4, width: "25ch", justifySelf: "center" }}
         onChange={handleUsernameChange}
       />
@@ -85,7 +83,6 @@ function Login({ setRights }) {
       >
         <InputLabel>Password</InputLabel>
         <OutlinedInput
-          color={error ? "error" : "primary"}
           type={passValues.showPassword ? "text" : "password"}
           value={passValues.password}
           onChange={handlePasswordChange("password")}
@@ -107,6 +104,7 @@ function Login({ setRights }) {
           label="password"
         />
       </FormControl>
+      {error ? <p style={{ color: "red" }}>{errormsg}</p> : null}
       <Button
         variant="contained"
         size="medium"
