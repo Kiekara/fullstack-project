@@ -7,29 +7,25 @@ const validator = new Validator();
 
 const wordRowSchema = {
   minProperties: 2,
-  maxProperties: 4,
+  maxProperties: 3,
   type: "object",
   properties: {
-    tag_id: {
+    tagID: {
       type: "number",
       minimum: 1,
     },
-    word_eng: {
+    wordEng: {
       type: "string",
       minLength: 1,
       maxLength: 100,
     },
-    word_swe: {
-      type: "string",
-      minLength: 1,
-      maxLength: 100,
-    },
-    word_fin: {
+    wordFin: {
       type: "string",
       minLength: 2,
       maxLength: 100,
     },
   },
+  required: ["wordEng", "wordFin"],
 };
 
 const tagSchema = {
