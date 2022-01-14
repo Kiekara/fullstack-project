@@ -12,9 +12,15 @@ function EditWordRow({
   getData,
   api,
 }) {
-  const { tagID } = row;
+  const { id, tagID } = row;
   const [newPri, setNewPri] = useState("");
   const [newSec, setNewSec] = useState("");
+
+  const data = {
+    tagID: tagID,
+    wordEng: !swap ? newPri : newSec,
+    wordFin: !swap ? newSec : newPri,
+  };
 
   const handlePrimary = (event) => {
     let inputValue = event.target.value;
@@ -27,9 +33,19 @@ function EditWordRow({
   };
 
   const handleCancel = () => {
-    setRowEdit(false);
     setNewPri("");
     setNewSec("");
+    setRowEdit(false);
+  };
+
+  const handleConfirm = async () => {
+    let response = await api.editData("words", data, id);
+    console.log(response);
+    let result = await getData("words");
+    console.log(result);
+    setNewPri("");
+    setNewSec("");
+    setRowEdit(false);
   };
 
   return (
@@ -58,7 +74,7 @@ function EditWordRow({
         <IconButton size="medium" color="error" onClick={handleCancel}>
           <FontAwesomeIcon icon={faTimes} />
         </IconButton>
-        <IconButton size="medium" color="success">
+        <IconButton size="medium" color="success" onClick={handleConfirm}>
           <FontAwesomeIcon icon={faCheck} />
         </IconButton>
       </span>
