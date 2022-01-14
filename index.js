@@ -3,7 +3,7 @@ const cors = require("cors");
 const data = require("./routes/data.js");
 const login = require("./routes/login.js");
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.use(express.static("./build"));
 
@@ -16,5 +16,5 @@ app.use("/login", login);
 app.use("/data", data);
 
 const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+  console.log(`Listening on port ${server.address().port}`);
 });
