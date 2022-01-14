@@ -35,10 +35,6 @@ function WordList({
         })
       );
     }
-
-    if (!submit) {
-      setPercentage(0);
-    }
   }, [answers, sort, submit, words]);
 
   const handleClick = () => {
@@ -76,6 +72,7 @@ function WordList({
             setLearn={setLearn}
             setEdit={setEdit}
             setSubmit={setSubmit}
+            setPercentage={setPercentage}
           />
           {!edit ? (
             <EditButton rights={rights} sort={sort} setEdit={setEdit} />
