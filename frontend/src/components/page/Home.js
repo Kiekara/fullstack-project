@@ -91,6 +91,7 @@ function Home() {
             <Box sx={{ flexGrow: 1 }} mt={learn ? "16px" : "40px"}>
               <WordList
                 words={words}
+                tags={tags}
                 sort={sort}
                 learn={learn}
                 swap={swap}
