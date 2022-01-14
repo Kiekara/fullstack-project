@@ -17,6 +17,8 @@ function Login({ setRights }) {
     showPassword: false,
   });
   const [username, setUsername] = useState("");
+  const [error, setError] = useState(false);
+  const [errormsg, setErrormsg] = useState("");
 
   const handlePasswordChange = (prop) => (event) => {
     setPassValues({ ...passValues, [prop]: event.target.value });
@@ -57,6 +59,8 @@ function Login({ setRights }) {
       if ("rights" in result) {
         setRights(result.rights);
       } else {
+        setError(true);
+        setErrormsg(result.msg);
         console.log(result);
       }
     }
@@ -67,9 +71,11 @@ function Login({ setRights }) {
 
   return (
     <>
+      {error ? <p style={{ color: "red" }}>{errormsg}</p> : null}
       <TextField
         label="Username"
         value={username}
+        color={error ? "error" : "primary"}
         sx={{ m: 1, mt: 4, width: "25ch", justifySelf: "center" }}
         onChange={handleUsernameChange}
       />
@@ -79,6 +85,7 @@ function Login({ setRights }) {
       >
         <InputLabel>Password</InputLabel>
         <OutlinedInput
+          color={error ? "error" : "primary"}
           type={passValues.showPassword ? "text" : "password"}
           value={passValues.password}
           onChange={handlePasswordChange("password")}
