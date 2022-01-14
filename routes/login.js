@@ -30,4 +30,16 @@ const credentialsSchema = {
   required: ["username", "password"],
 };
 
+login.post("/", (req, res) => {
+  let credentials = req.body;
+  let credentialsValidation = validator.validate(
+    credentials,
+    credentialsSchema
+  );
+
+  if (credentialsValidation.errors.length > 0) {
+    res.status(401).send(credentialsValidation.errors);
+  }
+});
+
 module.exports = login;
