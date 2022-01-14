@@ -17,4 +17,17 @@ const users = [
 const login = express.Router();
 const validator = new Validator();
 
+const credentialsSchema = {
+  type: "object",
+  properties: {
+    username: {
+      type: "string",
+    },
+    password: {
+      type: "string",
+    },
+  },
+  required: ["username", "password"],
+};
+
 module.exports = login;
