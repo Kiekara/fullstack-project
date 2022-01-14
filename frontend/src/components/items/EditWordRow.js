@@ -26,6 +26,12 @@ function EditWordRow({
     setNewSec(inputValue);
   };
 
+  const handleCancel = () => {
+    setRowEdit(false);
+    setNewPri("");
+    setNewSec("");
+  };
+
   return (
     <ListItem>
       <TextField
@@ -49,7 +55,7 @@ function EditWordRow({
         onChange={handleSecondary}
       />
       <span style={{ paddingLeft: "8px" }}>
-        <IconButton size="medium" color="error">
+        <IconButton size="medium" color="error" onClick={handleCancel}>
           <FontAwesomeIcon icon={faTimes} />
         </IconButton>
         <IconButton size="medium" color="success">
