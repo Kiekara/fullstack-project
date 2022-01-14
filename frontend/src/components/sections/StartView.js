@@ -1,6 +1,6 @@
 import React from "react";
 import LearnButton from "../items/LearnButton";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -22,9 +22,21 @@ function StartView({ learn, swap, setSort, setLearn, setSwap }) {
         <p>Choose which way you want to practise</p>
         <br />
         <Box>
+          <TextField
+            value={!swap ? "English" : "Finnish"}
+            size="small"
+            inputProps={{ readOnly: true }}
+            sx={{ width: "25%" }}
+          />
           <IconButton size="medium" color="primary" onClick={handleSwap}>
             <FontAwesomeIcon icon={faExchangeAlt} />
           </IconButton>
+          <TextField
+            value={!swap ? "Finnish" : "English"}
+            size="small"
+            inputProps={{ readOnly: true }}
+            sx={{ width: "25%" }}
+          />
         </Box>
         <br />
         <p>
