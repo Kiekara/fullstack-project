@@ -46,7 +46,7 @@ function Login({ setRights }) {
         password: passValues.password,
       };
 
-      let response = await fetch("http://localhost:8080/login/", {
+      let response = await fetch("/login/", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
