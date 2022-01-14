@@ -15,7 +15,7 @@ function LearnButton({ learn, setSort, setLearn }) {
     </>
   ) : (
     <>
-      <Button disabled variant="contained" size="medium" onClick={handleClick}>
+      <Button disabled variant="contained" size="medium">
         Learn random words
       </Button>
     </>
