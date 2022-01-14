@@ -16,6 +16,7 @@ function WordRow({
 }) {
   const { id, wordEng, wordFin } = row;
   const [input, setInput] = useState("");
+  const [rowEdit, setRowEdit] = useState(false);
   const [primary, setPrimary] = useState("");
   const [secondary, setSecondary] = useState("");
 
@@ -46,6 +47,10 @@ function WordRow({
         })
       );
     }
+  };
+
+  const handleEdit = () => {
+    setRowEdit(true);
   };
 
   const handleDelete = async () => {
@@ -96,7 +101,7 @@ function WordRow({
         )}
         {edit ? (
           <span style={{ paddingLeft: "8px" }}>
-            <IconButton size="medium" color="primary">
+            <IconButton size="medium" color="primary" onClick={handleEdit}>
               <FontAwesomeIcon icon={faEdit} />
             </IconButton>
             <IconButton size="medium" color="error" onClick={handleDelete}>
