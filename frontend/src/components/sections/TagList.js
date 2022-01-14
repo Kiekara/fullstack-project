@@ -18,7 +18,7 @@ function TagList({ tags, learn, setSort, setLearn, getData, api }) {
             setLearn={setLearn}
           />
         ))}
-        <AddTagForm getData={getData} api={api} />
+        <AddTagForm tags={tags} getData={getData} api={api} />
       </Stack>
     </>
   );
