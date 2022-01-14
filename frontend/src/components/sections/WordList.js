@@ -7,6 +7,7 @@ import { Button, List, ListItem } from "@mui/material";
 import EditButton from "../items/EditButton";
 import AddWordRow from "../items/AddWordRow";
 import QuitButton from "../items/QuitButton";
+import EditTagForm from "../items/EditTagForm";
 
 function WordList({
   words,
@@ -76,6 +77,7 @@ function WordList({
             api={api}
           />
         </ListItem>
+        {edit ? <EditTagForm /> : null}
         {words.map((row, index) =>
           sort === 0 ? (
             <WordRow
