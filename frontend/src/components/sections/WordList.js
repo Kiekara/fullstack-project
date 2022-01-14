@@ -7,7 +7,17 @@ import { Button, List, ListItem } from "@mui/material";
 import EditButton from "../items/EditButton";
 import WordRowForm from "../items/WordRowForm";
 
-function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
+function WordList({
+  words,
+  sort,
+  learn,
+  swap,
+  setSort,
+  setLearn,
+  setSwap,
+  getData,
+  api,
+}) {
   const [answers, setAnswers] = useState([]);
   const [submit, setSubmit] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -27,7 +37,13 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
   };
 
   return sort === -1 ? (
-    <StartView learn={learn} setSort={setSort} setLearn={setLearn} />
+    <StartView
+      learn={learn}
+      swap={swap}
+      setSort={setSort}
+      setLearn={setLearn}
+      setSwap={setSwap}
+    />
   ) : (
     <>
       <List
@@ -60,6 +76,7 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             <WordRow
               row={row}
               index={index}
+              swap={swap}
               edit={edit}
               submit={submit}
               answers={answers}
@@ -71,6 +88,7 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             <WordRow
               row={row}
               index={index}
+              swap={swap}
               edit={edit}
               submit={submit}
               answers={answers}
@@ -92,7 +110,7 @@ function WordList({ words, sort, learn, setSort, setLearn, getData, api }) {
             </Button>
           </ListItem>
         ) : (
-          <WordRowForm />
+          <WordRowForm swap={swap} />
         )}
       </List>
     </>
