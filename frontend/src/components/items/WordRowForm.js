@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IconButton, ListItem, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,16 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 function WordRowForm({ swap, getData, api }) {
   const [primary, setPrimary] = useState("");
   const [secondary, setSecondary] = useState("");
+
+  useEffect(() => {
+    if (!swap) {
+      setPrimary("English");
+      setSecondary("Finnish");
+    } else {
+      setPrimary("Finnish");
+      setSecondary("English");
+    }
+  }, [swap]);
 
   return (
     <ListItem>
