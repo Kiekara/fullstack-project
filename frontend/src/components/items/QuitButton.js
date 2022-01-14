@@ -4,12 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function QuitButton({ setEdit }) {
+  const handleQuit = () => {
+    setEdit(false);
+  };
+
   return (
     <span style={{ marginRight: "auto", marginLeft: "auto" }}>
       <Button
         variant="contained"
         size="medium"
         startIcon={<FontAwesomeIcon icon={faTimes} />}
+        onClick={handleQuit}
       >
         Quit editing
       </Button>
