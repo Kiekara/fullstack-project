@@ -8,6 +8,7 @@ function Home() {
   const [words, setWords] = useState([]);
   const [sort, setSort] = useState(-1);
   const [learn, setLearn] = useState(false);
+  const [swap, setSwap] = useState(false);
 
   useEffect(() => {
     const get = async (path) => {
@@ -90,8 +91,10 @@ function Home() {
                 words={words}
                 sort={sort}
                 learn={learn}
+                swap={swap}
                 setSort={setSort}
                 setLearn={setLearn}
+                setSwap={setSwap}
                 getData={getData}
                 api={api}
               />
