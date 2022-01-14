@@ -49,7 +49,7 @@ function EditWordRow({
   };
 
   return (
-    <ListItem>
+    <ListItem key={id}>
       <TextField
         hiddenLabel
         placeholder={primary}
