@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import EditWordRow from "./EditWordRow";
 import { IconButton, ListItem, ListItemText, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -59,7 +60,17 @@ function WordRow({
     console.log(data);
   };
 
-  return (
+  return rowEdit ? (
+    <EditWordRow
+      row={row}
+      swap={swap}
+      primary={primary}
+      secondary={secondary}
+      setRowEdit={setRowEdit}
+      getData={getData}
+      api={api}
+    />
+  ) : (
     <>
       <ListItem>
         <ListItemText primary={primary} />
