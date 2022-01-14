@@ -3,7 +3,7 @@ import { IconButton, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function AddTagForm({ tags, getData, api }) {
+function AddTagForm({ rights, tags, getData, api }) {
   const [tag, setTag] = useState("");
 
   const handleChange = (event) => {
@@ -31,7 +31,7 @@ function AddTagForm({ tags, getData, api }) {
     setTag("");
   };
 
-  return (
+  return rights === "admin" ? (
     <>
       <span
         style={{
@@ -53,7 +53,7 @@ function AddTagForm({ tags, getData, api }) {
         </IconButton>
       </span>
     </>
-  );
+  ) : null;
 }
 
 export default AddTagForm;
