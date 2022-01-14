@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TagList from "../sections/TagList";
 import WordList from "../sections/WordList";
+import Login from "./Login";
 import { Box, Container, Grid } from "@mui/material";
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
   const [sort, setSort] = useState(-1);
   const [learn, setLearn] = useState(false);
   const [swap, setSwap] = useState(false);
+  const [rights, setRights] = useState("");
 
   useEffect(() => {
     const get = async (path) => {
@@ -16,9 +18,11 @@ function Home() {
       console.log(data);
     };
 
-    get("tags");
-    get("words");
-  }, []);
+    if (rights) {
+      get("tags");
+      get("words");
+    }
+  }, [rights]);
 
   const getData = async (path) => {
     let response = await fetch(`http://localhost:8080/data/${path}/`, {
@@ -67,14 +71,18 @@ function Home() {
     },
   };
 
-  return (
+  return !rights ? (
+    <Login setRights={setRights} />
+  ) : (
     <>
       <Container maxWidth="960px">
         <h1>Language learning app</h1>
         <Grid container spacing={2} mt={"16px"} mb={"16px"}>
           <Grid item xs={4}>
             <TagList
+              rights={rights}
               tags={tags}
+              words={words}
               learn={learn}
               setSort={setSort}
               setLearn={setLearn}
@@ -90,6 +98,7 @@ function Home() {
             ) : null}
             <Box sx={{ flexGrow: 1 }} mt={learn ? "16px" : "40px"}>
               <WordList
+                rights={rights}
                 words={words}
                 tags={tags}
                 sort={sort}
