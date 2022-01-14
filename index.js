@@ -5,6 +5,8 @@ const login = require("./routes/login.js");
 const app = express();
 const port = 8080;
 
+app.use(express.static("./build"));
+
 app.use(express.json());
 
 app.use(cors());
