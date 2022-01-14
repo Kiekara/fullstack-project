@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mui/material";
 
 function TagButton({ rights, tag, words, learn, setSort, setLearn }) {
   const { id, name } = tag;
-  const [numOfProps, setNumOfProps] = useState(
-    words.filter((row) => row.tagID === id).length
-  );
+  const numOfProps = words.filter((row) => row.tagID === id).length;
 
   const handleClick = () => {
-    console.log(numOfProps);
     setSort(id);
     setLearn(true);
   };
