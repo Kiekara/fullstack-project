@@ -110,7 +110,7 @@ function WordList({
             </Button>
           </ListItem>
         ) : (
-          <WordRowForm swap={swap} getData={getData} api={api} />
+          <WordRowForm sort={sort} swap={swap} getData={getData} api={api} />
         )}
       </List>
     </>
