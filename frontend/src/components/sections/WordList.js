@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import StartView from "./StartView";
-import WordRow from "../items/WordRow";
+import EditButton from "../items/EditButton";
 import BackButton from "../items/BackButton";
 import DeleteButton from "../items/DeleteButton";
-import { Button, List, ListItem } from "@mui/material";
-import EditButton from "../items/EditButton";
-import AddWordRow from "../items/AddWordRow";
 import QuitButton from "../items/QuitButton";
+import WordRow from "../items/WordRow";
+import AddWordRow from "../items/AddWordRow";
 import EditTagForm from "../items/EditTagForm";
+import { Button, List, ListItem } from "@mui/material";
 
 function WordList({
+  rights,
   words,
   tags,
   sort,
@@ -24,6 +25,7 @@ function WordList({
   const [answers, setAnswers] = useState([]);
   const [submit, setSubmit] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     if (!answers.length) {
@@ -33,9 +35,15 @@ function WordList({
         })
       );
     }
-  }, [answers, sort, words, words.length]);
+  }, [answers, sort, submit, words]);
 
   const handleClick = () => {
+    let answersRight = answers
+      .filter((answer) => answer !== null)
+      .filter((answer) => answer !== false).length;
+    let questionsTotal = words.filter((row) => row.tagID === sort).length;
+    setPercentage((answersRight / questionsTotal) * 100);
+
     setSubmit(true);
   };
 
@@ -66,11 +74,12 @@ function WordList({
             setSubmit={setSubmit}
           />
           {!edit ? (
-            <EditButton setEdit={setEdit} />
+            <EditButton rights={rights} sort={sort} setEdit={setEdit} />
           ) : (
             <QuitButton setEdit={setEdit} />
           )}
           <DeleteButton
+            rights={rights}
             sort={sort}
             setSort={setSort}
             setLearn={setLearn}
@@ -83,6 +92,7 @@ function WordList({
               tag.id === sort ? (
                 <EditTagForm
                   tag={tag}
+                  tags={tags}
                   setEdit={setEdit}
                   getData={getData}
                   api={api}
@@ -131,6 +141,13 @@ function WordList({
         ) : (
           <AddWordRow sort={sort} swap={swap} getData={getData} api={api} />
         )}
+        {submit ? (
+          <>
+            <br />
+            <p>You got {percentage.toFixed(2)}% of the questions right</p>
+            <br />
+          </>
+        ) : null}
       </List>
     </>
   );
