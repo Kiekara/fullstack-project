@@ -5,7 +5,7 @@ import BackButton from "../items/BackButton";
 import DeleteButton from "../items/DeleteButton";
 import { Button, List, ListItem } from "@mui/material";
 import EditButton from "../items/EditButton";
-import WordRowForm from "../items/WordRowForm";
+import AddWordRow from "../items/AddWordRow";
 
 function WordList({
   words,
@@ -110,7 +110,7 @@ function WordList({
             </Button>
           </ListItem>
         ) : (
-          <WordRowForm sort={sort} swap={swap} getData={getData} api={api} />
+          <AddWordRow sort={sort} swap={swap} getData={getData} api={api} />
         )}
       </List>
     </>
