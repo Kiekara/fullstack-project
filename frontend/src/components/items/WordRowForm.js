@@ -24,6 +24,7 @@ function WordRowForm({ sort, swap, getData, api }) {
       <TextField
         label={priLabel}
         variant="filled"
+        value={primary}
         size="small"
         margin="dense"
         sx={{ width: "45%", mr: "8px" }}
@@ -31,6 +32,7 @@ function WordRowForm({ sort, swap, getData, api }) {
       <TextField
         label={secLabel}
         variant="filled"
+        value={secondary}
         size="small"
         margin="dense"
         sx={{ width: "45%", mr: "8px" }}
