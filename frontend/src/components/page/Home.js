@@ -78,6 +78,8 @@ function Home() {
               learn={learn}
               setSort={setSort}
               setLearn={setLearn}
+              getData={getData}
+              api={api}
             />
           </Grid>
           <Grid item xs={8}>
