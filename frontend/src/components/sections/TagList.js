@@ -1,8 +1,8 @@
 import React from "react";
 import TagButton from "../items/TagButton";
 import LearnButton from "../items/LearnButton";
-import { Stack } from "@mui/material";
 import AddTagForm from "../items/AddTagForm";
+import { Stack } from "@mui/material";
 
 function TagList({
   rights,
