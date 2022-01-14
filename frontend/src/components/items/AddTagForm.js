@@ -3,7 +3,7 @@ import { IconButton, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function AddTagForm({ getData, api }) {
+function AddTagForm({ tags, getData, api }) {
   const [tag, setTag] = useState("");
 
   const handleChange = (event) => {
@@ -11,11 +11,23 @@ function AddTagForm({ getData, api }) {
     setTag(inputValue);
   };
 
+  const checkDuplicates = (tag, tags) => {
+    let names = tags.map((tag) => tag.name);
+
+    return names.includes(tag);
+  };
+
   const handlePost = async () => {
-    let response = await api.postData("tags", { name: tag });
-    console.log(response);
-    let result = await getData("tags");
-    console.log(result);
+    let found = checkDuplicates(tag.toLowerCase(), tags);
+    console.log(found);
+
+    if (!found) {
+      let response = await api.postData("tags", { name: tag });
+      console.log(response);
+      let result = await getData("tags");
+      console.log(result);
+    }
+
     setTag("");
   };
 
@@ -29,7 +41,7 @@ function AddTagForm({ getData, api }) {
         }}
       >
         <TextField
-          label="Tag"
+          label="Category"
           value={tag}
           size="small"
           margin="dense"
