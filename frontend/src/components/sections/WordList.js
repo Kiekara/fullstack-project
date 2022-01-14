@@ -81,7 +81,12 @@ function WordList({
         {edit
           ? tags.map((tag) =>
               tag.id === sort ? (
-                <EditTagForm tag={tag} getData={getData} api={api} />
+                <EditTagForm
+                  tag={tag}
+                  setEdit={setEdit}
+                  getData={getData}
+                  api={api}
+                />
               ) : null
             )
           : null}
