@@ -40,7 +40,7 @@ const authorizeLogin = (credentials) => {
       return {
         status: "unauthorized",
         code: 401,
-        response: { msg: "Incorrect password." },
+        response: { msg: "Incorrect username or password." },
       };
     }
   } else {
