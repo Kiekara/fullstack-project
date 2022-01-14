@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function AddTagForm() {
+function AddTagForm({ getData, api }) {
+  const [tag, setTag] = useState("");
+
   return (
     <>
       <span
