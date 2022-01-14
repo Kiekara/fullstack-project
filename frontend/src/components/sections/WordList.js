@@ -11,6 +11,7 @@ import EditTagForm from "../items/EditTagForm";
 
 function WordList({
   words,
+  tags,
   sort,
   learn,
   swap,
@@ -77,7 +78,7 @@ function WordList({
             api={api}
           />
         </ListItem>
-        {edit ? <EditTagForm /> : null}
+        {edit ? <EditTagForm tags={tags} /> : null}
         {words.map((row, index) =>
           sort === 0 ? (
             <WordRow
