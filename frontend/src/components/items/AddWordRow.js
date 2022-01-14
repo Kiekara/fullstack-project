@@ -35,7 +35,7 @@ function AddWordRow({ sort, swap, getData, api }) {
     setSecondary(inputValue);
   };
 
-  const handleEdit = async () => {
+  const handlePost = async () => {
     let response = await api.postData("words", data);
     console.log(response);
     let result = await getData("words");
@@ -64,7 +64,7 @@ function AddWordRow({ sort, swap, getData, api }) {
         sx={{ width: "45%", mr: "8px" }}
         onChange={handleSecondary}
       />
-      <IconButton size="medium" color="success" onClick={handleEdit}>
+      <IconButton size="medium" color="success" onClick={handlePost}>
         <FontAwesomeIcon icon={faPlus} />
       </IconButton>
     </ListItem>
