@@ -4,7 +4,16 @@ import LearnButton from "../items/LearnButton";
 import { Stack } from "@mui/material";
 import AddTagForm from "../items/AddTagForm";
 
-function TagList({ tags, learn, setSort, setLearn, getData, api }) {
+function TagList({
+  rights,
+  tags,
+  words,
+  learn,
+  setSort,
+  setLearn,
+  getData,
+  api,
+}) {
   return (
     <>
       <Stack spacing={2}>
@@ -12,13 +21,15 @@ function TagList({ tags, learn, setSort, setLearn, getData, api }) {
         <LearnButton learn={learn} setSort={setSort} setLearn={setLearn} />
         {tags.map((tag) => (
           <TagButton
+            rights={rights}
             tag={tag}
+            words={words}
             learn={learn}
             setSort={setSort}
             setLearn={setLearn}
           />
         ))}
-        <AddTagForm tags={tags} getData={getData} api={api} />
+        <AddTagForm rights={rights} tags={tags} getData={getData} api={api} />
       </Stack>
     </>
   );
