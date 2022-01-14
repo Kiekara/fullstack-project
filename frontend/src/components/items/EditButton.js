@@ -3,12 +3,12 @@ import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-function EditButton({ setEdit }) {
+function EditButton({ rights, sort, setEdit }) {
   const handleEdit = () => {
     setEdit(true);
   };
 
-  return (
+  return sort !== 0 && rights === "admin" ? (
     <span style={{ marginRight: "auto", marginLeft: "auto" }}>
       <Button
         variant="contained"
@@ -19,7 +19,7 @@ function EditButton({ setEdit }) {
         Edit category
       </Button>
     </span>
-  );
+  ) : null;
 }
 
 export default EditButton;
