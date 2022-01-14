@@ -3,31 +3,33 @@ import { IconButton, ListItem, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function WordRowForm({ swap, getData, api }) {
+function WordRowForm({ sort, swap, getData, api }) {
+  const [priLabel, setPriLabel] = useState("");
+  const [secLabel, setSecLabel] = useState("");
   const [primary, setPrimary] = useState("");
   const [secondary, setSecondary] = useState("");
 
   useEffect(() => {
     if (!swap) {
-      setPrimary("English");
-      setSecondary("Finnish");
+      setPriLabel("English");
+      setSecLabel("Finnish");
     } else {
-      setPrimary("Finnish");
-      setSecondary("English");
+      setPriLabel("Finnish");
+      setSecLabel("English");
     }
   }, [swap]);
 
   return (
     <ListItem>
       <TextField
-        label={primary}
+        label={priLabel}
         variant="filled"
         size="small"
         margin="dense"
         sx={{ width: "45%", mr: "8px" }}
       />
       <TextField
-        label={secondary}
+        label={secLabel}
         variant="filled"
         size="small"
         margin="dense"
