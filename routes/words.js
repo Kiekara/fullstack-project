@@ -35,7 +35,7 @@ const wordRowSchema = {
 const tagSchema = {
   type: "object",
   properties: {
-    tag: {
+    name: {
       type: "string",
       minLength: 1,
     },
