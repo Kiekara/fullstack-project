@@ -3,15 +3,16 @@ import { IconButton, ListItem, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-function EditWordRow({ row, swap, setRowEdit, getData, api }) {
-  const [priPlace, setPriPlace] = useState("");
-  const [secPlace, setSecPlace] = useState("");
+function EditWordRow({ row, primary, secondary, setRowEdit, getData, api }) {
+  const { id, wordEng, wordFin } = row;
+  const [newPri, setNewPri] = useState("");
+  const [newSec, setNewSec] = useState("");
 
   return (
     <ListItem>
       <TextField
         hiddenLabel
-        placeholder={priPlace}
+        placeholder={primary}
         variant="filled"
         size="small"
         margin="dense"
@@ -19,7 +20,7 @@ function EditWordRow({ row, swap, setRowEdit, getData, api }) {
       />
       <TextField
         hiddenLabel
-        placeholder={secPlace}
+        placeholder={secondary}
         variant="filled"
         size="small"
         margin="dense"
