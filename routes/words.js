@@ -40,7 +40,7 @@ const tagSchema = {
       minLength: 1,
     },
   },
-  required: ["tag"],
+  required: ["name"],
 };
 
 const tableSchema = {
