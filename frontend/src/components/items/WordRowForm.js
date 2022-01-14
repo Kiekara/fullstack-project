@@ -19,6 +19,16 @@ function WordRowForm({ sort, swap, getData, api }) {
     }
   }, [swap]);
 
+  const handlePrimary = (event) => {
+    let inputValue = event.target.value;
+    setPrimary(inputValue);
+  };
+
+  const handleSecondary = (event) => {
+    let inputValue = event.target.value;
+    setSecondary(inputValue);
+  };
+
   return (
     <ListItem>
       <TextField
@@ -28,6 +38,7 @@ function WordRowForm({ sort, swap, getData, api }) {
         size="small"
         margin="dense"
         sx={{ width: "45%", mr: "8px" }}
+        onChange={handlePrimary}
       />
       <TextField
         label={secLabel}
@@ -36,6 +47,7 @@ function WordRowForm({ sort, swap, getData, api }) {
         size="small"
         margin="dense"
         sx={{ width: "45%", mr: "8px" }}
+        onChange={handleSecondary}
       />
       <IconButton size="medium" color="success">
         <FontAwesomeIcon icon={faPlus} />
