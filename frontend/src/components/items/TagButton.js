@@ -16,12 +16,7 @@ function TagButton({ tag, learn, setSort, setLearn }) {
           Learn {name}
         </Button>
       ) : (
-        <Button
-          disabled
-          variant="contained"
-          size="medium"
-          onClick={handleClick}
-        >
+        <Button disabled variant="contained" size="medium">
           Learn {name}
         </Button>
       )}
