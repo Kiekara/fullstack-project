@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IconButton, ListItem, ListItemText, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,7 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 function WordRow({
   row,
   index,
+  swap,
   edit,
   submit,
   answers,
@@ -15,12 +16,24 @@ function WordRow({
 }) {
   const { id, wordEng, wordFin } = row;
   const [input, setInput] = useState("");
+  const [primary, setPrimary] = useState("");
+  const [secondary, setSecondary] = useState("");
+
+  useEffect(() => {
+    if (!swap) {
+      setPrimary(wordEng);
+      setSecondary(wordFin);
+    } else {
+      setPrimary(wordFin);
+      setSecondary(wordEng);
+    }
+  }, [swap, wordEng, wordFin]);
 
   const handleChange = (event) => {
     let inputValue = event.target.value;
     setInput(inputValue);
 
-    if (inputValue === wordFin) {
+    if (inputValue === secondary) {
       setAnswers(
         answers.map((answer, idx) => {
           return idx === index ? true : answer;
@@ -44,7 +57,7 @@ function WordRow({
   return (
     <>
       <ListItem>
-        <ListItemText primary={wordEng} />
+        <ListItemText primary={primary} />
         {submit && answers[index] ? (
           <TextField
             focused
