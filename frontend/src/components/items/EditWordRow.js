@@ -13,8 +13,8 @@ function EditWordRow({
   api,
 }) {
   const { id, tagID } = row;
-  const [newPri, setNewPri] = useState("");
-  const [newSec, setNewSec] = useState("");
+  const [newPri, setNewPri] = useState(primary);
+  const [newSec, setNewSec] = useState(secondary);
 
   const data = {
     tagID: tagID,
