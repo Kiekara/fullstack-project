@@ -13,6 +13,7 @@ function QuitButton({ setEdit }) {
       <Button
         variant="contained"
         size="medium"
+        color="error"
         startIcon={<FontAwesomeIcon icon={faTimes} />}
         onClick={handleQuit}
       >
