@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function DeleteButton({ sort, setSort, setLearn, getData, api }) {
+function DeleteButton({ rights, sort, setSort, setLearn, getData, api }) {
   const handleDelete = async () => {
     await api.deleteData("tags", sort);
     let data = await getData("tags");
@@ -12,7 +12,7 @@ function DeleteButton({ sort, setSort, setLearn, getData, api }) {
     setLearn(false);
   };
 
-  return (
+  return sort !== 0 && rights === "admin" ? (
     <>
       <Button
         variant="contained"
@@ -24,7 +24,7 @@ function DeleteButton({ sort, setSort, setLearn, getData, api }) {
         Delete category
       </Button>
     </>
-  );
+  ) : null;
 }
 
 export default DeleteButton;
