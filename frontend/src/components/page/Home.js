@@ -25,7 +25,7 @@ function Home() {
   }, [rights]);
 
   const getData = async (path) => {
-    let response = await fetch(`http://localhost:8080/data/${path}/`, {
+    let response = await fetch(`/data/${path}/`, {
       method: "GET",
     });
     let data = await response.json();
@@ -41,7 +41,7 @@ function Home() {
 
   const api = {
     postData: async (path, data) => {
-      let response = await fetch(`http://localhost:8080/data/${path}/`, {
+      let response = await fetch(`/data/${path}/`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -53,7 +53,7 @@ function Home() {
       return result;
     },
     editData: async (path, data, id) => {
-      let response = await fetch(`http://localhost:8080/data/${path}/${id}/`, {
+      let response = await fetch(`/data/${path}/${id}/`, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: {
@@ -65,7 +65,7 @@ function Home() {
       return result;
     },
     deleteData: async (path, id) => {
-      await fetch(`http://localhost:8080/data/${path}/${id}/`, {
+      await fetch(`/data/${path}/${id}/`, {
         method: "DELETE",
       });
     },
