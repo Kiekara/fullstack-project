@@ -78,9 +78,13 @@ function WordList({
             api={api}
           />
         </ListItem>
-        {edit ? (
-          <EditTagForm tags={tags} sort={sort} getData={getData} api={api} />
-        ) : null}
+        {edit
+          ? tags.map((tag) =>
+              tag.id === sort ? (
+                <EditTagForm tag={tag} getData={getData} api={api} />
+              ) : null
+            )
+          : null}
         {words.map((row, index) =>
           sort === 0 ? (
             <WordRow
