@@ -1,9 +1,14 @@
+// Import modules
 import React, { useState, useEffect } from "react";
 import TagList from "../sections/TagList";
 import WordList from "../sections/WordList";
 import Login from "./Login";
 import { Box, Container, Grid } from "@mui/material";
 
+/**
+ * The base of home screen and home for other components
+ * @returns
+ */
 function Home() {
   const [tags, setTags] = useState([]);
   const [words, setWords] = useState([]);
@@ -13,6 +18,7 @@ function Home() {
   const [rights, setRights] = useState("");
 
   useEffect(() => {
+    // Get data after logging in
     const get = async (path) => {
       let data = await getData(path);
       console.log(data);
@@ -24,6 +30,7 @@ function Home() {
     }
   }, [rights]);
 
+  // Function for getting data
   const getData = async (path) => {
     let response = await fetch(`/data/${path}/`, {
       method: "GET",
@@ -39,7 +46,9 @@ function Home() {
     return data;
   };
 
+  // Connection function to api
   const api = {
+    // Function for posting data
     postData: async (path, data) => {
       let response = await fetch(`/data/${path}/`, {
         method: "POST",
@@ -52,6 +61,7 @@ function Home() {
 
       return result;
     },
+    // Function for editing data
     editData: async (path, data, id) => {
       let response = await fetch(`/data/${path}/${id}/`, {
         method: "PUT",
@@ -64,6 +74,7 @@ function Home() {
 
       return result;
     },
+    // Function for deleting data
     deleteData: async (path, id) => {
       await fetch(`/data/${path}/${id}/`, {
         method: "DELETE",
@@ -71,6 +82,7 @@ function Home() {
     },
   };
 
+  // Return login, if user has not logged in
   return !rights ? (
     <Login setRights={setRights} />
   ) : (

@@ -1,3 +1,4 @@
+// Import modules
 import React, { useState } from "react";
 import {
   Button,
@@ -11,6 +12,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Component for login screen, when login session isn't going on
+ * @param {Object} props Component props
+ * @param {string} props.setRights State setter for user rights
+ * @returns
+ */
 function Login({ setRights }) {
   const [passValues, setPassValues] = useState({
     password: "",
@@ -20,14 +27,17 @@ function Login({ setRights }) {
   const [error, setError] = useState(false);
   const [errormsg, setErrormsg] = useState("");
 
+  // Enter password
   const handlePasswordChange = (prop) => (event) => {
     setPassValues({ ...passValues, [prop]: event.target.value });
   };
 
+  // Enter username
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
 
+  // Show password
   const handleClickShowPassword = () => {
     setPassValues({
       ...passValues,
@@ -39,6 +49,7 @@ function Login({ setRights }) {
     event.preventDefault();
   };
 
+  // Send credentials to backend
   const handleLogin = async () => {
     if (username && passValues.password) {
       const data = {
@@ -71,12 +82,14 @@ function Login({ setRights }) {
 
   return (
     <>
+      {/** Ask username */}
       <TextField
         label="Username"
         value={username}
         sx={{ m: 1, mt: 4, width: "25ch", justifySelf: "center" }}
         onChange={handleUsernameChange}
       />
+      {/** Ask password */}
       <FormControl
         sx={{ m: 1, width: "25ch", justifySelf: "center" }}
         variant="outlined"
@@ -104,7 +117,9 @@ function Login({ setRights }) {
           label="password"
         />
       </FormControl>
+      {/** Notify possible error */}
       {error ? <p style={{ color: "red" }}>{errormsg}</p> : null}
+      {/** Submit credentials */}
       <Button
         variant="contained"
         size="medium"

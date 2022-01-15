@@ -1,3 +1,4 @@
+// Import modules
 import React, { useState, useEffect } from "react";
 import StartView from "./StartView";
 import EditButton from "../items/EditButton";
@@ -9,6 +10,22 @@ import AddWordRow from "../items/AddWordRow";
 import EditTagForm from "../items/EditTagForm";
 import { Button, List, ListItem } from "@mui/material";
 
+/**
+ * Component for listing word pairs and a couple of buttons
+ * @param {Object} props Component props
+ * @param {string} props.rights User rights
+ * @param {Array} props.words Word pairs
+ * @param {Array} props.tags Tags
+ * @param {number} props.sort Used for sorting by tag
+ * @param {boolean} props.learn Indicates if user has opened a test
+ * @param {boolean} props.swap Indicates if user has swapped language order
+ * @param {()} props.setSort Used for changing sorting state
+ * @param {()} props.setLearn Used for changing learning state
+ * @param {()} props.setSwap Used for changing swapping state
+ * @param {()} props.getData Used for fetching data from database
+ * @param {{}} props.api Stores other database connection functions
+ * @returns
+ */
 function WordList({
   rights,
   words,
@@ -27,6 +44,7 @@ function WordList({
   const [edit, setEdit] = useState(false);
   const [percentage, setPercentage] = useState(0);
 
+  // Initialize null answers
   useEffect(() => {
     if (!answers.length) {
       setAnswers(
@@ -37,6 +55,7 @@ function WordList({
     }
   }, [answers, sort, submit, words]);
 
+  // Function for submit and score calculation
   const handleClick = () => {
     let answersRight = answers
       .filter((answer) => answer !== null)

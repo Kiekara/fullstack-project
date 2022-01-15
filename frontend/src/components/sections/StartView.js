@@ -1,9 +1,20 @@
+// Import modules
 import React from "react";
 import LearnButton from "../items/LearnButton";
 import { Box, IconButton, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Component user sees first time logging in
+ * @param {Object} props Component props
+ * @param {boolean} props.learn Indicates if user has opened a test
+ * @param {boolean} props.swap Indicates if user has swapped language order
+ * @param {()} props.setSort Used for changing sorting state
+ * @param {()} props.setLearn Used for changing learning state
+ * @param {()} props.setSwap Used for changing swapping state
+ * @returns
+ */
 function StartView({ learn, swap, setSort, setLearn, setSwap }) {
   const handleSwap = () => {
     if (!swap) {

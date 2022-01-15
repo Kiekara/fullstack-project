@@ -1,9 +1,24 @@
+// Import modules
 import React, { useState, useEffect } from "react";
 import EditWordRow from "./EditWordRow";
 import { IconButton, ListItem, ListItemText, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Component for showing word pairs
+ * @param {Object} props Component props
+ * @param {{}} props.row Stores words and tag id
+ * @param {number} props.index Helps distinguish row from each other
+ * @param {boolean} props.swap Indicates if user has swapped language order
+ * @param {boolean} props.edit Indicates if edit state is on
+ * @param {boolean} props.submit Indicates if the words have been submitted
+ * @param {Array} props.answers Answer values for each answer
+ * @param {()} props.setAnswers Used for changing answers state
+ * @param {()} props.getData Used for fetching data from database
+ * @param {{}} props.api Stores other database connection functions
+ * @returns
+ */
 function WordRow({
   row,
   index,
@@ -21,6 +36,7 @@ function WordRow({
   const [primary, setPrimary] = useState("");
   const [secondary, setSecondary] = useState("");
 
+  // Check which language is in primary position
   useEffect(() => {
     if (!swap) {
       setPrimary(wordEng);
@@ -35,6 +51,7 @@ function WordRow({
     let inputValue = event.target.value;
     setInput(inputValue);
 
+    // Compare input the case insensitive way
     if (inputValue.toUpperCase() === secondary.toUpperCase()) {
       setAnswers(
         answers.map((answer, idx) => {
@@ -54,6 +71,7 @@ function WordRow({
     setRowEdit(true);
   };
 
+  // Delete words
   const handleDelete = async () => {
     await api.deleteData("words", id);
     let data = await getData("words");

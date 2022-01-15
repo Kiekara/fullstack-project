@@ -1,8 +1,18 @@
+// Import modules
 import React, { useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Component for adding tags
+ * @param {Object} props Component props
+ * @param {string} props.rights User rights
+ * @param {Array} props.tags Tags
+ * @param {()} props.getData Used for fetching data from database
+ * @param {{}} props.api Stores other database connection functions
+ * @returns
+ */
 function AddTagForm({ rights, tags, getData, api }) {
   const [tag, setTag] = useState("");
 
@@ -21,6 +31,7 @@ function AddTagForm({ rights, tags, getData, api }) {
     let found = checkDuplicates(tag.toLowerCase(), tags);
     console.log(found);
 
+    // No duplicate posts to database
     if (!found) {
       let response = await api.postData("tags", { name: tag });
       console.log(response);

@@ -1,9 +1,23 @@
+// Import modules
 import React from "react";
 import TagButton from "../items/TagButton";
 import LearnButton from "../items/LearnButton";
 import AddTagForm from "../items/AddTagForm";
 import { Stack } from "@mui/material";
 
+/**
+ * Component for listing tags
+ * @param {Object} props Component props
+ * @param {string} props.rights User rights
+ * @param {Array} props.tags Tags
+ * @param {Array} props.words Word pairs
+ * @param {boolean} props.learn Indicates if user has opened a test
+ * @param {()} props.setSort Used for changing sorting state
+ * @param {()} props.setLearn Used for changing learning state
+ * @param {()} props.getData Used for fetching data from database
+ * @param {{}} props.api Stores other database connection functions
+ * @returns
+ */
 function TagList({
   rights,
   tags,

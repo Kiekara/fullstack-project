@@ -1,8 +1,21 @@
+// Import modules
 import React, { useState } from "react";
 import { IconButton, ListItem, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Component for editing word pairs
+ * @param {Object} props Component props
+ * @param {row} props.row Stores words and tag id
+ * @param {swap} props.swap Indicates if user has swapped language order
+ * @param {string} props.primary Indicates primary language
+ * @param {string} props.secondary Indicates secondary language
+ * @param {()} props.setRowEdit Used change setRow state
+ * @param {()} props.getData Used for fetching data from database
+ * @param {{}} props.api Stores other database connection functions
+ * @returns
+ */
 function EditWordRow({
   row,
   swap,
@@ -38,6 +51,7 @@ function EditWordRow({
     setRowEdit(false);
   };
 
+  // Put words
   const handleConfirm = async () => {
     let response = await api.editData("words", data, id);
     console.log(response);
