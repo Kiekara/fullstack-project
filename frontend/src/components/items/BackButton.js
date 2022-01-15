@@ -3,12 +3,20 @@ import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-function BackButton({ setSort, setLearn, setEdit, setSubmit, setPercentage }) {
+function BackButton({
+  setSort,
+  setLearn,
+  setEdit,
+  setSubmit,
+  setAnswers,
+  setPercentage,
+}) {
   const handleClick = () => {
     setSort(-1);
     setLearn(false);
     setEdit(false);
     setSubmit(false);
+    setAnswers([]);
     setPercentage(0);
   };
 
