@@ -72,6 +72,7 @@ function WordList({
             setLearn={setLearn}
             setEdit={setEdit}
             setSubmit={setSubmit}
+            setAnswers={setAnswers}
             setPercentage={setPercentage}
           />
           {!edit ? (
