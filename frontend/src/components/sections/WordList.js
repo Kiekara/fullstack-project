@@ -41,7 +41,15 @@ function WordList({
     let answersRight = answers
       .filter((answer) => answer !== null)
       .filter((answer) => answer !== false).length;
-    let questionsTotal = words.filter((row) => row.tagID === sort).length;
+
+    let questionsTotal = "";
+
+    if (sort !== 0) {
+      questionsTotal = words.filter((row) => row.tagID === sort).length;
+    } else {
+      questionsTotal = words.length;
+    }
+
     setPercentage((answersRight / questionsTotal) * 100);
 
     setSubmit(true);
