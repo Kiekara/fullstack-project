@@ -11,7 +11,7 @@ Words and categories can also be edited in case mistakes happen or they can be c
 
 ## Where to get
 
-Language learning app is totally free-to-use and is being hosted at: https://lng-app.herokuapp.com/
+Language learning app is totally free-to-use and is being hosted at: https://language-app-nxap.onrender.com
 
 Available users:
 
