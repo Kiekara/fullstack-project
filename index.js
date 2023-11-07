@@ -1,32 +1,11 @@
-/**
- * Express module
- * @module express
- */
+// Require needed modules
 const express = require("express");
-/**
- * Cors module
- * @type {NodeModule}
- */
 const cors = require("cors");
-/**
- * Data router
- * @type {module}
- */
 const data = require("./routes/data.js");
-/**
- * Login router
- * @type {module}
- */
 const login = require("./routes/login.js");
-/**
- * App
- * @express application
- */
+
+// Initiate express intance
 const app = express();
-/**
- * Server port
- * @type {string | number}
- */
 const port = process.env.PORT || 8080;
 
 // Serve static files from given subdirectory
