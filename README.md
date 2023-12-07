@@ -19,6 +19,4 @@ with admin rights; username: teacher and password: 1234
 
 with normal rights; username: student and password: 0000
 
-For more info, check out screencast: https://www.youtube.com/watch?v=IjfvcKy5vp4
-
 ![Alt text](https://i.gyazo.com/0283221c32ad7b0c6816ffec82d1dfde.png "Words")
